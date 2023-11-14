@@ -19,7 +19,11 @@ class PetController extends Controller
     }
     public function store(Request $request)
     {
+
         $data = $request->all();
-        $name = $request->input('name');
+        // Pegar somente um campo $name = $request->input('name');
+        $pet = Pet::create($data);
+        return $pet;
+
     }
 }

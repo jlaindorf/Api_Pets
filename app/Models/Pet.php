@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pet extends Model
 {
     use HasFactory;
+
+    // altera o nome da tabela buscada pelo modelo
+    protected $table = 'pets';
+
+    protected $fillable = ['name', 'weight', 'size', 'age'];
+
 }
