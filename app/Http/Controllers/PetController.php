@@ -26,4 +26,16 @@ class PetController extends Controller
         return $pet;
 
     }
+    public function destroy($id)
+    {
+        try{
+
+        $pet = Pet::find($id);
+         $pet->delete();
+
+        }catch (\Throwable $th) {
+            return;
+        }
+
+    }
 }
