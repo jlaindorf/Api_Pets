@@ -24,7 +24,6 @@ class PetController extends Controller
         // Pegar somente um campo $name = $request->input('name');
         $pet = Pet::create($data);
         return response($pet, 201);
-
     }
     public function destroy($id)
     {
@@ -32,7 +31,7 @@ class PetController extends Controller
 
         $pet = Pet::find($id);
 
-        if(!$pet)  return $this->response('Pet não encontrado', null, false, 404);
+        if (!$pet)  return $this->response('Pet não encontrado', null, false, 404);
         $pet->delete();
         return $this->response('', null, true, 204);
     }
@@ -40,9 +39,18 @@ class PetController extends Controller
     public function show($id)
     {
         $pet = Pet::find($id);
-        if(!$pet)  return $this->response('Pet não encontrado', null, false, 404);
+        if (!$pet)  return $this->response('Pet não encontrado', null, false, 404);
 
         return $this->response('', $pet, true, 200);
     }
 
+    public function update($id, Request $request)
+    {
+        $data = $request->all();
+        $pet = Pet::find($id);
+        if (!$pet)  return $this->response('Pet não encontrado', null, false, 404);
+
+        $pet->update($data);
+        return $pet;
+    }
 }

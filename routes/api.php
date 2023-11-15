@@ -19,3 +19,4 @@ Route::get('/pets',[ PetController::class,'index']);
 Route::post('/pets',[ PetController::class,'store']);
 Route::delete('/pets/{id}',[ PetController::class,'destroy']);
 Route::get('/pets/{id}',[ PetController::class,'show']); //listar apenas um item da classe
+Route::put('/pets/{id}',[ PetController::class,'update']);
