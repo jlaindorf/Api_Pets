@@ -29,7 +29,7 @@ class PetController extends Controller
     {
 
 
-        $pet = Pet::find($id);
+        $pet = Pet::find($id); //se usar findOrFail ele retorna 404 se não achar o id
 
         if (!$pet)  return $this->response('Pet não encontrado', null, false, 404);
         $pet->delete();
