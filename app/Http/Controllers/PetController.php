@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 
 class PetController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         try {
-            $pets = Pet::All();
-            return  $pets;
+
+            $params= $request->query();
+
+            $pets = Pet::query();
+            if($request->has('age') && !empty($params['age'])){
+                $pets->where('age', $params['age']);  }
+
+            return  $pets->get();
         } catch (\Throwable $th) {
             return;
         }
